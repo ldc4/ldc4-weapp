@@ -1,12 +1,13 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/test/test",
         "pages/chat/chat"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#333",
-        "navigationBarTitleText": "腾讯云小程序解决方案",
+        "navigationBarTitleText": "零度尘封",
         "navigationBarTextStyle": "white"
     }
 }
