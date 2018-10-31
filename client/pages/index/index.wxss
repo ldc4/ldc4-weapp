@@ -137,3 +137,9 @@
   font-size: 13px;
   line-height: 40px;
 }
+
+.ani-init{
+  position: relative;
+  top: -10px;
+  opacity: 0;
+}

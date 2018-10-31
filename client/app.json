@@ -1,13 +1,15 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/test/test",
-        "pages/chat/chat"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#333",
-        "navigationBarTitleText": "零度尘封",
-        "navigationBarTextStyle": "white"
-    }
+  "pages": [
+    "pages/index/index",
+    "pages/test/test",
+    "pages/chat/chat",
+    "pages/demo/demo",
+    "pages/demo/animation/animation"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "零度尘封",
+    "navigationBarTextStyle": "white"
+  }
 }

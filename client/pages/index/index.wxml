@@ -4,20 +4,21 @@
   <view class="main">
       <view class="content">
           <view class="header">
-            <text class="title">Weedust</text>
+            <text class="title ani-init" animation="{{animationDatas[0]}}">Weedust</text>
             <view class="quote show">
-              <view class="quote-text">从零开始，斗破苍穹，七界传说</view>
-              <view class="quote-author">——源自小说名</view>
+              <view class="quote-text ani-init" animation="{{animationDatas[1]}}">从零开始，斗破苍穹，七界传说</view>
+              <view class="quote-author ani-init" animation="{{animationDatas[2]}}">——源自小说名</view>
             </view>
           </view>
           <view class="menu">
-            <navigator class="menu-link" url="/pages/test/test">GitHub</navigator>
-            <navigator class="menu-link" url="/pages/test/test">Blog</navigator>
-            <navigator class="menu-link" url="/pages/test/test">E-Nav</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[3]}}" url="/pages/test/test">GitHub</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[4]}}" url="/pages/test/test">Blog</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[5]}}" url="/pages/test/test">E-Nav</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[6]}}" url="/pages/demo/demo">Demo</navigator>
           </view>
           <view class="location">
-            <i class="location-icon"></i>
-            <span class="location-text animate-init">ShenZhen - China</span>
+            <i class="location-icon ani-init" animation="{{animationDatas[7]}}"></i>
+            <span class="location-text ani-init" animation="{{animationDatas[8]}}">ShenZhen - China</span>
           </view>
       </view>
   </view>
