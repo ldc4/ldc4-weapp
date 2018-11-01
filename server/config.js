@@ -1,4 +1,3 @@
-const DEBUG = false;
 const CONF = {
     port: '5757',
     rootPathname: '',
@@ -46,4 +45,4 @@ const CONF = {
 // module.exports = CONF;
 
 // 区分测试环境和正式环境
-module.exports = Object.assign({}, CONF, DEBUG ? require('./config.dev') : require('./config.local'));
+module.exports = Object.assign({}, CONF, require('./config.local'));
