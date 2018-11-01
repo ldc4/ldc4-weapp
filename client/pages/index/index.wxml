@@ -6,14 +6,14 @@
           <view class="header">
             <text class="title ani-init" animation="{{animationDatas[0]}}">Weedust</text>
             <view class="quote show">
-              <view class="quote-text ani-init" animation="{{animationDatas[1]}}">{{mottoData.quote.text}}</view>
-              <view class="quote-author ani-init" animation="{{animationDatas[2]}}">{{mottoData.quote.author}}</view>
+              <view class="quote-text ani-init" animation="{{animationDatas[1]}}">{{mottoData.text || ''}}</view>
+              <view class="quote-author ani-init" animation="{{animationDatas[2]}}">{{mottoData.author || ''}}</view>
             </view>
           </view>
           <view class="menu">
-            <navigator class="menu-link ani-init" animation="{{animationDatas[3]}}" url="/pages/test/test">GitHub</navigator>
-            <navigator class="menu-link ani-init" animation="{{animationDatas[4]}}" url="/pages/test/test">Blog</navigator>
-            <navigator class="menu-link ani-init" animation="{{animationDatas[5]}}" url="/pages/test/test">E-Nav</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[3]}}" url="/pages/github/github">GitHub</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[4]}}" url="/pages/blog/blog">Blog</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[5]}}" url="/pages/e-nav/eNav">E-Nav</navigator>
             <navigator class="menu-link ani-init" animation="{{animationDatas[6]}}" url="/pages/demo/demo">Demo</navigator>
           </view>
           <view class="location">

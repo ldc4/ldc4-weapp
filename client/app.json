@@ -4,7 +4,10 @@
     "pages/test/test",
     "pages/chat/chat",
     "pages/demo/demo",
-    "pages/demo/animation/animation"
+    "pages/demo/animation/animation",
+    "pages/github/github",
+    "pages/blog/blog",
+    "pages/e-nav/eNav"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -4,9 +4,7 @@ const { host } = config.service;
 Page({
   data: {
     animationDatas: [],
-    mottoData: {
-      quote: {},
-    },
+    mottoData: {},
   },
   aniMain: function () {
     const query = wx.createSelectorQuery();
@@ -35,7 +33,7 @@ Page({
       },
     });
   },
-  onShow: function () {
+  onReady: function () {
     this.aniMain();
   },
   onLoad: function (options) {
