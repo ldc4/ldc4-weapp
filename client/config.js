@@ -2,8 +2,12 @@
  * 小程序配置文件
  */
 
-// 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://api.weedust.com';
+var debug = false;
+
+var prodHost = 'https://api.weedust.com';
+var devHost = 'https://qfp7th8i.qcloud.la'; // 此处主机域名修改成腾讯云解决方案分配的域名
+
+var host = debug ? devHost : prodHost;
 
 var config = {
 

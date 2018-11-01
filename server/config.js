@@ -1,3 +1,4 @@
+const DEBUG = false;
 const CONF = {
     port: '5757',
     rootPathname: '',
@@ -41,4 +42,8 @@ const CONF = {
     wxLoginExpires: 7200
 }
 
-module.exports = Object.assign({}, CONF, require('./config.local'));
+// 若直接使用该配置
+// module.exports = CONF;
+
+// 区分测试环境和正式环境
+module.exports = Object.assign({}, CONF, DEBUG ? require('./config.dev') : require('./config.local'));
