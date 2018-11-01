@@ -6,8 +6,8 @@
           <view class="header">
             <text class="title ani-init" animation="{{animationDatas[0]}}">Weedust</text>
             <view class="quote show">
-              <view class="quote-text ani-init" animation="{{animationDatas[1]}}">从零开始，斗破苍穹，七界传说</view>
-              <view class="quote-author ani-init" animation="{{animationDatas[2]}}">——源自小说名</view>
+              <view class="quote-text ani-init" animation="{{animationDatas[1]}}">{{mottoData.quote.text}}</view>
+              <view class="quote-author ani-init" animation="{{animationDatas[2]}}">{{mottoData.quote.author}}</view>
             </view>
           </view>
           <view class="menu">

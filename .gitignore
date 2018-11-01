@@ -45,6 +45,7 @@ sh/
 sdk.config.json
 # ignore local config
 server/config.local.js
+server/config.dev.js
 # 用于上传到vps
 server.zip
 # mac产生的文件

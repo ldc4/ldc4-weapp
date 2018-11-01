@@ -1,11 +1,17 @@
+const config = require('../../config');
+const { host } = config.service;
+
 Page({
   data: {
     animationDatas: [],
+    mottoData: {
+      quote: {},
+    },
   },
   aniMain: function () {
     const query = wx.createSelectorQuery();
     const ref = query.selectAll('.ani-init');
-    ref.fields({}, function (res) {
+    ref.fields({}, (res) => {
       const animationDatas = [];
       res.forEach(function (node, index) {
         const animation = wx.createAnimation({
@@ -16,10 +22,24 @@ Page({
         animationDatas.push(animation.export());
       });
       this.setData({ animationDatas });
-    }.bind(this)).exec();
+    }).exec();
+  },
+  getMotto: function () {
+    wx.request({
+      url: `${host}/weapp/motto`,
+      success: ({data, statusCode}) => {
+        if (statusCode == 200 && data.code == 0) {
+          const mottoData = data.data;
+          this.setData({ mottoData });
+        }
+      },
+    });
   },
   onShow: function () {
     this.aniMain();
-  }
+  },
+  onLoad: function (options) {
+    this.getMotto();
+  },
 })
 
