@@ -96,7 +96,6 @@
 }
 
 .menu {
-  margin-top: 40px;
   text-align: center;
   font-size: 14px;
 }
@@ -115,6 +114,10 @@
 }
 .menu .menu-link:first-child {
   margin-left: 0;
+}
+
+.play {
+  text-align: center;
 }
 
 .location {

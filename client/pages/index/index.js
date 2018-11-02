@@ -5,7 +5,16 @@ Page({
   data: {
     animationDatas: [],
     mottoData: {},
+    playFocus: false,
+    playContent: '',
   },
+  onReady: function () {
+    this.aniMain();
+  },
+  onLoad: function (options) {
+    this.getMotto();
+  },
+  // 动画效果
   aniMain: function () {
     const query = wx.createSelectorQuery();
     const ref = query.selectAll('.ani-init');
@@ -22,6 +31,7 @@ Page({
       this.setData({ animationDatas });
     }).exec();
   },
+  // 获取格言
   getMotto: function () {
     wx.request({
       url: `${host}/weapp/motto`,
@@ -33,11 +43,22 @@ Page({
       },
     });
   },
-  onReady: function () {
-    this.aniMain();
+  // 弹一下
+  onPlayTap: function (e) {
+    this.setData({
+      playFocus: true,
+      playContent: '',
+    });
   },
-  onLoad: function (options) {
-    this.getMotto();
+  // 完成弹幕
+  onPlayInputConfirm: function (e) {
+    const value = e.detail.value;
+    // todo 存到数据库
+    console.log(value);
   },
+  // 失去焦点
+  onPlayInputBlur: function (e) {
+    this.setData({ playFocus: false });
+  }
 })
 
