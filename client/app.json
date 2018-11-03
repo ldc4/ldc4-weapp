@@ -8,7 +8,8 @@
     "pages/github/github",
     "pages/blog/blog",
     "pages/e-nav/eNav",
-    "pages/demo/input/input"
+    "pages/demo/input/input",
+    "pages/demo/video/video"
   ],
   "window": {
     "backgroundTextStyle": "light",

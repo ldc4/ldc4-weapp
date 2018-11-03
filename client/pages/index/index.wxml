@@ -1,13 +1,20 @@
 <view class="container">
   <image class="backgroud-image" mode="aspectFill" src="https://bing.ioliu.cn/v1/blur?d=0&w=1920&h=1080&r=1"></image>
   <view class="mask"></view>
+  <view class="bullet-screen">
+    <block wx:for="{{bulletList}}" wx:key="key">
+      <text wx:if="{{item.visible}}" data-index="{{index}}" class="bullet" style="top:{{item.top}}px;left:{{item.left}}px;position:absolute;" animation="{{bulletAnimationList[index]}}">
+        {{item.content || '666'}}{{item.user ? ' - ' : ''}}{{item.user || ''}}
+      </text>
+    </block>
+  </view>
   <view class="main">
       <view class="content">
           <view class="header">
-            <text class="title ani-init" animation="{{animationDatas[0]}}">Weedust</text>
+            <text class="title ani-init" animation="{{animationList[0]}}">Weedust</text>
             <view class="quote show">
-              <view class="quote-text ani-init" animation="{{animationDatas[1]}}">{{mottoData.text || ''}}</view>
-              <view class="quote-author ani-init" animation="{{animationDatas[2]}}">{{mottoData.author || ''}}</view>
+              <view class="quote-text ani-init" animation="{{animationList[1]}}">{{mottoData.text || ''}}</view>
+              <view class="quote-author ani-init" animation="{{animationList[2]}}">{{mottoData.author || ''}}</view>
             </view>
           </view>
           <view wx:if="{{playFocus}}" class="play">
@@ -20,14 +27,14 @@
             />
           </view>
           <view class="menu">
-            <navigator class="menu-link ani-init" animation="{{animationDatas[3]}}" url="/pages/github/github">GitHub</navigator>
-            <navigator class="menu-link ani-init" animation="{{animationDatas[4]}}" url="/pages/blog/blog">Blog</navigator>
-            <navigator class="menu-link ani-init" animation="{{animationDatas[5]}}" url="/pages/e-nav/eNav">E-Nav</navigator>
-            <text class="menu-link ani-init" animation="{{animationDatas[6]}}" bindtap="onPlayTap">弹一下</text>
+            <navigator class="menu-link ani-init" animation="{{animationList[3]}}" url="/pages/demo/demo">Demo</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationList[4]}}" url="/pages/blog/blog">Blog</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationList[5]}}" url="/pages/e-nav/eNav">E-Nav</navigator>
+            <text class="menu-link ani-init" animation="{{animationList[6]}}" bindtap="onPlayTap">弹一下</text>
           </view>
           <view class="location">
-            <i class="location-icon ani-init" animation="{{animationDatas[7]}}"></i>
-            <span class="location-text ani-init" animation="{{animationDatas[8]}}">ShenZhen - China</span>
+            <i class="location-icon ani-init" animation="{{animationList[7]}}"></i>
+            <span class="location-text ani-init" animation="{{animationList[8]}}">ShenZhen - China</span>
           </view>
       </view>
   </view>

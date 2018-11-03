@@ -1,34 +1,63 @@
 const config = require('../../config');
+const { randomNumber } = require('../../utils/util');
 const { host } = config.service;
 
 Page({
   data: {
-    animationDatas: [],
+    animationList: [],
     mottoData: {},
     playFocus: false,
     playContent: '',
+    bulletList: [],
+    bulletAnimationList: []
   },
   onReady: function () {
     this.aniMain();
+    this.aniBullet();
   },
   onLoad: function (options) {
     this.getMotto();
+    this.getBullet();
   },
   // 动画效果
   aniMain: function () {
     const query = wx.createSelectorQuery();
     const ref = query.selectAll('.ani-init');
     ref.fields({}, (res) => {
-      const animationDatas = [];
+      const animationList = [];
       res.forEach(function (node, index) {
         const animation = wx.createAnimation({
           duration: 200,
           delay: 200 * index,
         });
         animation.opacity(1).top(0).step();
-        animationDatas.push(animation.export());
+        animationList.push(animation.export());
       });
-      this.setData({ animationDatas });
+      this.setData({ animationList });
+    }).exec();
+  },
+  // 弹幕效果
+  aniBullet: function () {
+    // 构造弹幕属性
+    const bulletAnimationList = [];
+    const bulletList = this.data.bulletList || [];
+    const query = wx.createSelectorQuery();
+    const ref = query.selectAll('.bullet');
+    ref.fields({ dataset: true, size: true }, (res) => {
+      bulletList.map((bullet, index) => {
+        res.forEach(function (node, nIndex) {
+          if (nIndex === index) {
+            // 设置动画
+            const randomDuration = randomNumber(1000, 5000);
+            const animation = wx.createAnimation({
+              duration: randomDuration,
+            });
+            animation.left(-node.width).step();
+            bulletAnimationList.push(animation.export());
+          }
+        });
+      });
+      this.setData({ bulletAnimationList });
     }).exec();
   },
   // 获取格言
@@ -42,6 +71,39 @@ Page({
         }
       },
     });
+  },
+  // 获取弹幕
+  getBullet: function () {
+    // 获取内容数据 todo
+    const data = [
+      {
+        content: '牛逼啊~',
+        user: 'weedustzhao'
+      },{
+        content: '磊妹是个逗比'
+      }, {
+        content: 'Peking是个逗比'
+      }, {
+        content: 'ashin是个逗比'
+      }
+    ];
+    // 获取屏幕宽度和高度
+    const screenWidth = wx.getSystemInfoSync().windowWidth;
+    const screenHeight = wx.getSystemInfoSync().windowHeight;
+    // 构造弹幕属性
+    const bulletAnimationList = [];
+    const bulletList = data.map((bullet, index) => {
+      const randomTop = randomNumber(0, screenHeight - 70);
+      return {
+        key: `bullet_${index}`,
+        content: bullet.content,
+        user: bullet.user,
+        top: randomTop,
+        left: screenWidth,
+        visible: true,
+      }
+    });
+    this.setData({ bulletList });
   },
   // 弹一下
   onPlayTap: function (e) {
