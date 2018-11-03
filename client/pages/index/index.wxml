@@ -3,7 +3,7 @@
   <view class="mask"></view>
   <view class="bullet-screen">
     <block wx:for="{{bulletList}}" wx:key="key">
-      <text wx:if="{{item.visible}}" data-index="{{index}}" class="bullet" style="top:{{item.top}}px;left:{{item.left}}px;position:absolute;" animation="{{bulletAnimationList[index]}}">
+      <text wx:if="{{item.visible}}" data-index="{{index}}" class="bullet" style="top:{{item.top}}px;left:{{item.left}}px;color:{{item.color}};position:absolute;" animation="{{bulletAnimationList[index]}}">
         {{item.content || '666'}}{{item.user ? ' - ' : ''}}{{item.user || ''}}
       </text>
     </block>

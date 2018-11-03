@@ -1,15 +1,16 @@
 const config = require('../../config');
+const { colors } = require('./constant');
 const { randomNumber } = require('../../utils/util');
 const { host } = config.service;
 
 Page({
   data: {
-    animationList: [],
-    mottoData: {},
-    playFocus: false,
-    playContent: '',
-    bulletList: [],
-    bulletAnimationList: []
+    animationList: [],        // 主页面动画
+    mottoData: {},            // 格言数据
+    playFocus: false,         // 弹一下输入框焦点
+    playContent: '',          // 弹一下内容
+    bulletList: [],           // 弹幕数据
+    bulletAnimationList: []   // 弹幕动画
   },
   onReady: function () {
     this.aniMain();
@@ -49,8 +50,10 @@ Page({
           if (nIndex === index) {
             // 设置动画
             const randomDuration = randomNumber(1000, 5000);
+            const randomDelay = randomNumber(1000, res.length * 1000 / 2);
             const animation = wx.createAnimation({
               duration: randomDuration,
+              delay: randomDelay,
             });
             animation.left(-node.width).step();
             bulletAnimationList.push(animation.export());
@@ -94,12 +97,14 @@ Page({
     const bulletAnimationList = [];
     const bulletList = data.map((bullet, index) => {
       const randomTop = randomNumber(0, screenHeight - 70);
+      const randomColorIndex = randomNumber(0, 23);
       return {
         key: `bullet_${index}`,
         content: bullet.content,
         user: bullet.user,
         top: randomTop,
         left: screenWidth,
+        color: colors[randomColorIndex],
         visible: true,
       }
     });
