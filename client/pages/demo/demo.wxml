@@ -1,3 +1,4 @@
 <!--client/pages/demo/demo.wxml-->
 <navigator url="animation/animation">animation</navigator>
 <navigator url="input/input">input</navigator>
+<navigator url="video/video">video</navigator>

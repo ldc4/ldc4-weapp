@@ -14,6 +14,12 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const randomNumber = (min, max) => {
+  const range = max - min;
+  const random = Math.random();
+  return min + Math.round(random * range);
+}
+
 
 // 显示繁忙提示
 var showBusy = text => wx.showToast({
@@ -39,4 +45,4 @@ var showModel = (title, content) => {
   })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+module.exports = { randomNumber, formatTime, showBusy, showSuccess, showModel }
