@@ -5,6 +5,7 @@ const { host } = config.service;
 
 Page({
   data: {
+    firstPage: true,              // 第一次进入
     animationList: [],            // 主页面动画
     mottoData: {},                // 格言数据
     playFocus: false,             // 弹一下输入框焦点
@@ -18,16 +19,21 @@ Page({
     this.getMotto(this.aniMain);
     this.getBullet(this.aniBullet);
   },
+  onReady: function () {
+    this.setData({ firstPage: false });
+  },
   onShow: function () {
-    // 重置数据
-    this.setData({
-      bulletList: [],               // 弹幕数据
-      bulletAnimationList: [],      // 弹幕动画
-      newBulletList: [],            // 新添加的弹幕数据
-      newBulletAnimationList: [],   // 新添加的弹幕动画
-    }, () => {
-      this.getBullet(this.aniBullet);
-    });
+    if (!this.data.firstPage) {
+      // 重置数据
+      this.setData({
+        bulletList: [],               // 弹幕数据
+        bulletAnimationList: [],      // 弹幕动画
+        newBulletList: [],            // 新添加的弹幕数据
+        newBulletAnimationList: [],   // 新添加的弹幕动画
+      }, () => {
+        this.getBullet(this.aniBullet);
+      });
+    }
   },
   // 动画效果
   aniMain: function () {
