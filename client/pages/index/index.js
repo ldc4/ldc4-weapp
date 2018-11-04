@@ -18,6 +18,17 @@ Page({
     this.getMotto(this.aniMain);
     this.getBullet(this.aniBullet);
   },
+  onShow: function () {
+    // 重置数据
+    this.setData({
+      bulletList: [],               // 弹幕数据
+      bulletAnimationList: [],      // 弹幕动画
+      newBulletList: [],            // 新添加的弹幕数据
+      newBulletAnimationList: [],   // 新添加的弹幕动画
+    }, () => {
+      this.getBullet(this.aniBullet);
+    });
+  },
   // 动画效果
   aniMain: function () {
     const query = wx.createSelectorQuery();
