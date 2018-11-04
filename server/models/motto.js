@@ -1,7 +1,6 @@
 const { mysql } = require('../qcloud');
 
-console.log(mysql);
-async function get(ctx, next) {
+async function get() {
   return await mysql.select().from('motto');
 }
 

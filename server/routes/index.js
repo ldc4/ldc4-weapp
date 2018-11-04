@@ -34,6 +34,8 @@ router.post('/message', controllers.message.post)
 
 // 请求格言数据
 router.get('/motto', controllers.motto)
-
+// 获取弹幕数据
+router.get('/bullet', controllers.bullet.get)
+router.post('/bullet', controllers.bullet.post)
 
 module.exports = router
