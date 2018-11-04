@@ -28,6 +28,20 @@
   position: absolute;
   white-space: nowrap;
   z-index: 999;
+  height: 24px;
+  line-height: 0.5;
+  padding: 0 5px;
+}
+
+.new-bullet {
+  position: absolute;
+  white-space: nowrap;
+  z-index: 999;
+  height: 24px;
+  line-height: 0.5;
+  padding: 0 5px;
+  border: 2px solid rgba(255,120,117, 0.75);
+  border-radius: 5px;
 }
 
 .main {

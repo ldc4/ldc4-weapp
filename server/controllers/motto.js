@@ -4,14 +4,14 @@ const Motto = require('../models/motto');
 module.exports = async (ctx, next) => {
 
   // 获取数据
-  const motto = await Motto.get();
+  const mottoList = await Motto.get();
 
   // 随机索引
-  const max = motto.length - 1;
+  const max = mottoList.length - 1;
   const min = 0;
   const range = max - min;
   const random = Math.random();
   const index = min + Math.round(random * range);
 
-  ctx.state.data = motto[index];
+  ctx.state.data = mottoList[index];
 }

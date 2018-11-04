@@ -20,6 +20,15 @@ const randomNumber = (min, max) => {
   return min + Math.round(random * range);
 }
 
+const getUser = (userInfo = {}) => {
+  try {
+    const userObj = JSON.parse(userInfo);
+    return userObj && userObj.nickName || '';
+  } catch (e) {
+    // 用户数据解析错误
+  }
+  return '';
+}
 
 // 显示繁忙提示
 var showBusy = text => wx.showToast({
@@ -45,4 +54,4 @@ var showModel = (title, content) => {
   })
 }
 
-module.exports = { randomNumber, formatTime, showBusy, showSuccess, showModel }
+module.exports = { randomNumber, getUser, formatTime, showBusy, showSuccess, showModel }
