@@ -59,7 +59,7 @@ Page({
           if (nIndex === index) {
             // 设置动画
             const randomDuration = randomNumber(1000, 5000);
-            const randomDelay = randomNumber(1000, res.length * 1000 / 2);
+            const randomDelay = randomNumber(500, res.length * 1000 / 2);
             const animation = wx.createAnimation({
               duration: randomDuration,
               delay: randomDelay,
