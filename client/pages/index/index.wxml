@@ -32,14 +32,11 @@
             />
           </view>
           <view class="menu">
-            <navigator class="menu-link ani-init" animation="{{animationList[3]}}" url="/pages/demo/demo">Demo</navigator>
-            <navigator class="menu-link ani-init" animation="{{animationList[4]}}" url="/pages/blog/blog">Blog</navigator>
-            <navigator class="menu-link ani-init" animation="{{animationList[5]}}" url="/pages/e-nav/eNav">E-Nav</navigator>
-            <text class="menu-link ani-init" animation="{{animationList[6]}}" bindtap="onPlayTap">弹一下</text>
+            <text class="menu-link ani-init" animation="{{animationList[3]}}" bindtap="onPlayTap">弹一下</text>
           </view>
           <view class="location">
-            <i class="location-icon ani-init" animation="{{animationList[7]}}"></i>
-            <span class="location-text ani-init" animation="{{animationList[8]}}">ShenZhen - China</span>
+            <i class="location-icon ani-init" animation="{{animationList[4]}}"></i>
+            <span class="location-text ani-init" animation="{{animationList[5]}}">ShenZhen - China</span>
           </view>
       </view>
   </view>
