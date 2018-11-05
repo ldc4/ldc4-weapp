@@ -1,10 +1,15 @@
+const qcloud = require('../../vendor/wafer2-client-sdk/index');
 const config = require('../../config');
 const { colors } = require('./constant');
-const { randomNumber, getUser } = require('../../utils/util');
+const { randomNumber, getUser, showBusy, showSuccess, showModal } = require('../../utils/util');
 const { host } = config.service;
+
+
 
 Page({
   data: {
+    logged: false,                // 登录态
+    userInfo: {},                 // 用户信息
     firstPage: true,              // 第一次进入
     animationList: [],            // 主页面动画
     mottoData: {},                // 格言数据
@@ -123,19 +128,23 @@ Page({
   },
   // 弹一下
   onPlayTap: function (e) {
-    this.setData({
-      playFocus: true,
-      playContent: '',
+    this.onLogin(() => {
+      this.setData({
+        playFocus: true,
+        playContent: '',
+      });
     });
   },
   // 完成弹幕
   onPlayInputConfirm: function (e) {
     const value = e.detail.value;
+    const userInfo = this.data.userInfo || {};
     wx.request({
       url: `${host}/weapp/bullet`,
       method: 'POST',
       data: {
-        content: value
+        content: value,
+        userInfo: JSON.stringify(userInfo),
       },
       success: ({ data, statusCode }) => {
         if (statusCode == 200 && data.code == 0) {
@@ -179,6 +188,43 @@ Page({
   // 失去焦点
   onPlayInputBlur: function (e) {
     this.setData({ playFocus: false });
-  }
+  },
+  // 登录鉴权
+  onLogin: function(callback) {
+    if (this.data.logged) return;
+    showBusy('正在登录...');
+    const session = qcloud.Session.get()
+    if (session) {
+      // 第二次登录
+      // 或者本地已经有登录态
+      // 可使用本函数更新登录态
+      qcloud.loginWithCode({
+        success: res => {
+          this.setData({ userInfo: res, logged: true })
+          showSuccess('登录成功')
+          callback()
+        },
+        fail: err => {
+          console.error(err)
+          showModal('登录错误', err.message)
+          callback()
+        }
+      })
+    } else {
+      // 首次登录
+      qcloud.login({
+        success: res => {
+          this.setData({ userInfo: res, logged: true })
+          showSuccess('登录成功')
+          callback()
+        },
+        fail: err => {
+          console.error(err)
+          showModal('登录错误', err.message)
+          callback()
+        }
+      })
+    }
+  },
 })
 
