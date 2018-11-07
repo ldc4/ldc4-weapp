@@ -1,7 +1,7 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index');
 const config = require('../../config');
 const { colors } = require('./constant');
-const { randomNumber, getUser, showBusy, showSuccess, showModal } = require('../../utils/util');
+const { randomNumber, getUser, showBusy, showSuccess, showToast, showModal } = require('../../utils/util');
 const { host } = config.service;
 
 
@@ -206,10 +206,7 @@ Page({
       return;
     }
     if (!isAllowed) {
-      showModal('登录失败', '使用匿名', {
-        confirmText: '明白',
-        complete: callback,
-      });
+      showToast('使用匿名', { complete: callback });
       return;
     }
     showBusy('正在登录...');
@@ -247,6 +244,15 @@ Page({
         }
       })
     }
+  },
+  onLogout: function() {
+    this.setData({
+      logged: false,
+      userInfo: {},
+    }, () => {
+      qcloud.Session.clear();
+      showSuccess('注销成功');
+    });
   },
 })
 

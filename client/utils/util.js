@@ -45,6 +45,13 @@ const showSuccess = (text, options = {}) => wx.showToast({
   ...options
 });
 
+// 显示普通信息
+const showToast = (text, options = {}) => wx.showToast({
+  title: text,
+  icon: 'none',
+  ...options
+});
+
 // 显示失败提示
 const showModal = (title, content, options = {}) => {
   wx.hideToast();
@@ -57,4 +64,4 @@ const showModal = (title, content, options = {}) => {
   });
 };
 
-module.exports = { randomNumber, getUser, formatTime, showBusy, showSuccess, showModal }
+module.exports = { randomNumber, getUser, formatTime, showBusy, showSuccess, showToast, showModal }
