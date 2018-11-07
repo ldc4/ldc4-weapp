@@ -13,6 +13,9 @@
       </text>
     </block>
   </view>
+  <view wx:if="{{logged}}" class="logout">
+    <button plain="true" class="logout-button" size="mini" bindtap="onLogout">注销</button>
+  </view>
   <view class="main">
       <view class="content">
           <view class="header">
