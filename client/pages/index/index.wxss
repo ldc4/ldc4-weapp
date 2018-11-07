@@ -144,6 +144,9 @@
   margin-left: 0;
 }
 
+.action {
+  padding-top: 30px;
+}
 .action .action-button {
   height: 30px;
   line-height: 30px;
