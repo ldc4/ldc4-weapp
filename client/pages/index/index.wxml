@@ -22,6 +22,11 @@
               <view class="quote-author ani-init" animation="{{animationList[2]}}">{{mottoData.author || ''}}</view>
             </view>
           </view>
+          <!-- <view class="menu">
+            <navigator class="menu-link ani-init" animation="{{animationDatas[3]}}" url="/pages/github/github">GitHub</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[4]}}" url="/pages/blog/blog">Blog</navigator>
+            <navigator class="menu-link ani-init" animation="{{animationDatas[5]}}" url="/pages/e-nav/eNav">E-Nav</navigator>
+          </view> -->
           <view wx:if="{{playFocus}}" class="play">
             <input
               placeholder="请输入弹幕~"
@@ -31,8 +36,13 @@
               cursor-spacing="30"
             />
           </view>
-          <view class="menu">
-            <text class="menu-link ani-init" animation="{{animationList[3]}}" bindtap="onPlayTap">弹一下</text>
+          <view class="action">
+            <button wx:if="{{!playFocus && canIUse}}" data-type="login" plain="true" class="action-button" open-type="getUserInfo" bindgetuserinfo="onPlayTap">
+              <text class="ani-init" animation="{{animationList[3]}}">弹一下</text>
+            </button>
+            <button wx:if="{{!playFocus && !canIUse}}" data-type="no-login" plain="true" class="action-button" bindtap="onPlayTap">
+              <text class="ani-init" animation="{{animationList[3]}}">弹一下</text>
+            </button>
           </view>
           <view class="location">
             <i class="location-icon ani-init" animation="{{animationList[4]}}"></i>

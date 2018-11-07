@@ -144,6 +144,11 @@
   margin-left: 0;
 }
 
+.action .action-button {
+  height: 30px;
+  line-height: 30px;
+}
+
 .play {
   text-align: center;
 }
