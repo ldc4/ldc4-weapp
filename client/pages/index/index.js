@@ -201,7 +201,10 @@ Page({
   },
   // 登录鉴权
   onLogin: function(isAllowed, callback) {
-    if (this.data.logged) return;
+    if (this.data.logged) {
+      callback();
+      return;
+    }
     if (!isAllowed) {
       showModal('登录失败', '使用匿名', {
         confirmText: '明白',
