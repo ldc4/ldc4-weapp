@@ -31,26 +31,29 @@ const getUser = (userInfo = {}) => {
 }
 
 // 显示繁忙提示
-const showBusy = text => wx.showToast({
+const showBusy = (text, options = {}) => wx.showToast({
   title: text,
   icon: 'loading',
-  duration: 10000
+  duration: 10000,
+  ...options
 });
 
 // 显示成功提示
-const showSuccess = text => wx.showToast({
+const showSuccess = (text, options = {}) => wx.showToast({
   title: text,
-  icon: 'success'
+  icon: 'success',
+  ...options
 });
 
 // 显示失败提示
-const showModal = (title, content) => {
+const showModal = (title, content, options = {}) => {
   wx.hideToast();
 
   wx.showModal({
     title,
     content: JSON.stringify(content),
-    showCancel: false
+    showCancel: false,
+    ...options
   });
 };
 

@@ -8,6 +8,7 @@ const { host } = config.service;
 
 Page({
   data: {
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     logged: false,                // 登录态
     userInfo: {},                 // 用户信息
     firstPage: true,              // 第一次进入
@@ -126,15 +127,6 @@ Page({
       },
     });
   },
-  // 弹一下
-  onPlayTap: function (e) {
-    this.onLogin(() => {
-      this.setData({
-        playFocus: true,
-        playContent: '',
-      });
-    });
-  },
   // 完成弹幕
   onPlayInputConfirm: function (e) {
     const value = e.detail.value;
@@ -189,9 +181,34 @@ Page({
   onPlayInputBlur: function (e) {
     this.setData({ playFocus: false });
   },
+  // 弹一下
+  onPlayTap: function (e) {
+    const { type } = e.target && e.target.dataset || {};
+    const { nickName } = e.detail && e.detail.userInfo || {};
+    if (type === 'login') {
+      this.onLogin(!!nickName, () => {
+        this.setData({
+          playFocus: true,
+          playContent: '',
+        });
+      });
+    } else {
+      this.setData({
+        playFocus: true,
+        playContent: '',
+      });
+    }
+  },
   // 登录鉴权
-  onLogin: function(callback) {
+  onLogin: function(isAllowed, callback) {
     if (this.data.logged) return;
+    if (!isAllowed) {
+      showModal('登录失败', '使用匿名', {
+        confirmText: '明白',
+        complete: callback,
+      });
+      return;
+    }
     showBusy('正在登录...');
     const session = qcloud.Session.get()
     if (session) {
@@ -201,13 +218,14 @@ Page({
       qcloud.loginWithCode({
         success: res => {
           this.setData({ userInfo: res, logged: true })
-          showSuccess('登录成功')
-          callback()
+          showSuccess('登录成功', { complete: callback });
         },
         fail: err => {
           console.error(err)
-          showModal('登录错误', err.message)
-          callback()
+          showModal('登录失败', '使用匿名', {
+            confirmText: '明白',
+            complete: callback,
+          });
         }
       })
     } else {
@@ -215,13 +233,14 @@ Page({
       qcloud.login({
         success: res => {
           this.setData({ userInfo: res, logged: true })
-          showSuccess('登录成功')
-          callback()
+          showSuccess('登录成功', { complete: callback });
         },
         fail: err => {
           console.error(err)
-          showModal('登录错误', err.message)
-          callback()
+          showModal('登录失败', '使用匿名', {
+            confirmText: '明白',
+            complete: callback,
+          });
         }
       })
     }
