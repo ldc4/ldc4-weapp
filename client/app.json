@@ -16,5 +16,6 @@
     "navigationBarBackgroundColor": "#333",
     "navigationBarTitleText": "零度尘封",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
