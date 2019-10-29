@@ -9,6 +9,7 @@ const { host } = config.service;
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    backgroundUrl: '',            // 背景图片URL
     logged: false,                // 登录态
     userInfo: {},                 // 用户信息
     firstPage: true,              // 第一次进入
@@ -22,6 +23,7 @@ Page({
     newBulletAnimationList: [],   // 新添加的弹幕动画
   },
   onLoad: function (options) {
+    this.getBackgroundURL();
     this.getMotto(this.aniMain);
     this.getBullet(this.aniBullet);
   },
@@ -40,6 +42,16 @@ Page({
         this.getBullet(this.aniBullet);
       });
     }
+  },
+  // 获取背景图片URL
+  getBackgroundURL: function() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const formatStr = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+    const url = 'http://static.weedust.com/bing_' + formatStr;
+    this.setData({ backgroundUrl: url });
   },
   // 动画效果
   aniMain: function () {

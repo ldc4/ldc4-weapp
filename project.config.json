@@ -12,5 +12,7 @@
 	},
 	"appid": "wx3cb98dc9b05737ac",
 	"projectname": "ldc4-weapp",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {}
 }

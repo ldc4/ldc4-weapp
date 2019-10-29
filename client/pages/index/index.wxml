@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="backgroud-image" mode="aspectFill" src="https://bing.ioliu.cn/v1/blur?d=0&w=1920&h=1080&r=1"></image>
+  <image class="backgroud-image" mode="aspectFill" src="{{backgroundUrl}}"></image>
   <view class="mask"></view>
   <view class="bullet-screen">
     <block wx:for="{{bulletList}}" wx:key="key">
