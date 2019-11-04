@@ -185,6 +185,8 @@ Page({
               this.setData({ newBulletAnimationList });
             }).exec();
           });
+        } else if(data.msg) {
+          showToast(data.msg)
         }
       },
     });
